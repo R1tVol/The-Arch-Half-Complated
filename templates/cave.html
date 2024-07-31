@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cave</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #333333);
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #000000;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: 2px solid #00FF00;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        a:hover {
+            background-color: #00FF00;
+            color: #000000;
+        }
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu-icon div {
+            width: 35px;
+            height: 5px;
+            background-color: #FFFFFF;
+            margin: 6px 0;
+            transition: all 0.4s ease-in-out;
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: #FFFFFF;
+            display: block;
+            transition: 0.3s;
+            border: 2px solid #FF0000;
+            margin: 10px 0;
+            background-color: #FF0000;
+            border-radius: 5px;
+        }
+        .sidebar a.story {
+            background-color: #00FF00;
+            border: 2px solid #00FF00;
+        }
+        .sidebar a.story:hover {
+            background-color: #00CC00;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #FFFFFF;
+            border: 2px solid #00FF00;
+            padding: 10px;
+            background-color: #00FF00; /* Kare şekli yeşil */
+            border-radius: 0; /* Kare şekli */
+        }
+        .sidebar .closebtn:hover {
+            background-color: #00CC00;
+            color: #000000;
+        }
+        .content {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #FFFFFF;
+            overflow: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 2.5em;
+        }
+        .content .text-and-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .content .text-and-image p {
+            text-align: left;
+            margin-right: 20px;
+        }
+        .content .text-and-image img {
+            width: 600px;
+            height: 600px;
+        }
+        .content a {
+            font-size: 1.5em;
+            color: #00FF00;
+        }
+        .content a:hover {
+            text-decoration: underline;
+        }
+        #mainContent {
+            text-align: center;
+        }
+        #mainContent h1, #mainContent a {
+            margin: 0;
+        }
+        .copyright {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1em;
+            color: #FFFFFF;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-icon" onclick="openNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" class="story" onclick="showStory()">Life Story</a>
+    </div>
+
+    <div id="mainContent">
+        <h1>WELCOME TO THE CAVE</h1>
+        <p>aaa</p>
+        <a href="{{ url_for('index') }}">Back to the registration</a>
+    </div>
+
+    <div id="storyContent" class="content">
+        <h2>Life Story</h2>
+        <div class="text-and-image">
+            <p>bbb</p>
+            <img src="img/aaa.jpg" alt="Image">
+        </div>
+        <p>ccc</p>
+        <a href="#" onclick="closeStory()">Close</a>
+    </div>
+
+    <div class="copyright">
+        All rights reserved by R1tVol ©.
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function showStory() {
+            document.getElementById("mainContent").style.display = "none";
+            document.getElementById("storyContent").style.display = "block";
+        }
+
+        function closeStory() {
+            document.getElementById("storyContent").style.display = "none";
+            document.getElementById("mainContent").style.display = "block";
+        }
+    </script>
+</body>
+</html>
